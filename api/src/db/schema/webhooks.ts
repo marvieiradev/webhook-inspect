@@ -1,4 +1,3 @@
-import { create } from "domain";
 import { timestamp } from "drizzle-orm/pg-core";
 import { pgTable, text, integer, jsonb } from "drizzle-orm/pg-core";
 import { uuidv7 } from "uuidv7";

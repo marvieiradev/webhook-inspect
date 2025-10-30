@@ -10,15 +10,19 @@ import { fastifyCors } from "@fastify/cors";
 import ScalarApiReference from "@scalar/fastify-api-reference";
 import { listWebhooks } from "./routes/list-webhooks";
 import { env } from "./env";
+//import { getWebhook } from "./routes/get-webhook";
+//import { deleteWebhook } from "./routes/delete-webhook";
+//import { captureWebhook } from "./routes/capture-webhook";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
+
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 app.register(fastifyCors, {
   origin: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  credentials: true,
+  //credentials: true,
 });
 
 app.register(fastifySwagger, {
