@@ -6,7 +6,7 @@ const envSchema = z.object({
     .default("development"),
   PORT: z.coerce.number().default(3333),
 
-  DATABASE_URL: z.url().optional(),
+  DATABASE_URL: z.url(),
 });
 
 export const env = envSchema.parse(process.env);
