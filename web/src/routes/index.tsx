@@ -1,8 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import { Sidebar } from "../components/sidebar";
-import { Badge } from "../components/ui/badge";
-import { WebhookDetailHeader } from "../components/webhook-detail-header";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -10,18 +6,15 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="h-screen bg-zinc-900">
-      <PanelGroup direction="horizontal">
-        <Panel defaultSize={20} minSize={15} maxSize={40}>
-          <Sidebar />
-        </Panel>
-        <PanelResizeHandle className="w-px bg-zinc-700 hover:bg-zinc-600 transition-colors duration-150" />
-        <Panel defaultSize={80} minSize={60}>
-          <div className="flex h-full flex-col">
-            <WebhookDetailHeader />
-          </div>
-        </Panel>
-      </PanelGroup>
+    <div className="flex h-full items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-2 p-8 text-center">
+        <h3 className="text-lg font-semibold text-zinc-200">
+          No webhook selected
+        </h3>
+        <p className="text-sm text-zinc-400 max-w-md">
+          Select a webhook from the list to view its details
+        </p>
+      </div>
     </div>
   );
 }
