@@ -13,6 +13,7 @@ import { env } from "./env";
 import { getWebhook } from "./routes/get-webhook";
 import { deleteWebhook } from "./routes/delete-webohook";
 import { captureWebhook } from "./routes/capture-webhok";
+import { generateHandler } from "./routes/generate-handler";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -22,14 +23,14 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(fastifyCors, {
   origin: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  //credentials: true,
+  // credentials: true,
 });
 
 app.register(fastifySwagger, {
   openapi: {
     info: {
       title: "Webhook Inspector API",
-      description: "API documentation for the Webhook Inspector service",
+      description: "API for capturing and inspecting webhook requests",
       version: "1.0.0",
     },
   },
@@ -44,6 +45,7 @@ app.register(listWebhooks);
 app.register(getWebhook);
 app.register(deleteWebhook);
 app.register(captureWebhook);
+app.register(generateHandler);
 
 app.listen({ port: env.PORT, host: "0.0.0.0" }).then(() => {
   console.log("Server is running");
